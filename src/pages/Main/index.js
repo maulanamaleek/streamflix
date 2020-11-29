@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Display from '../../components/molecules/display';
+import { MovieContext } from '../../utils/MovieContext';
+// import selectedMovie from '../../utils/MovieContextProvider';
 
 class Main extends Component {
   constructor(props) {
@@ -17,20 +19,40 @@ class Main extends Component {
       }));
   }
 
-  set = () => {
-    setTimeout(() => {
-      const { poster } = this.state;
-      console.log(poster);
-    }, 5000);
+  setPrice = (rating) => {
+    let price = 0;
+
+    if (rating >= 1 && rating <= 3) {
+      price = 3500;
+    }
+    if (rating > 3 && rating <= 6) {
+      price = 8250;
+    }
+    if (rating > 6 && rating <= 8) {
+      price = 16350;
+    }
+    if (rating > 8 && rating <= 10) {
+      price = 21250;
+    }
+
+    return price;
   }
 
   render() {
     const { poster } = this.state;
     return (
-      <div>
-        <h1>Text</h1>
-        {poster.map((item) => <Display key={item.id} src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} title={item.title} />)}
-      </div>
+      <MovieContext.Consumer>
+        {(context) => (
+          poster.map((item) => (
+            <Display
+              key={item.id}
+              src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
+              title={item.title}
+              price={this.setPrice(item.vote_average)}
+              click={() => context.setMovie(item.id)}
+            />
+          )))}
+      </MovieContext.Consumer>
     );
   }
 }
