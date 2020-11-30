@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Display from '../../components/molecules/display';
 import { MovieContext } from '../../utils/MovieContext';
-// import selectedMovie from '../../utils/MovieContextProvider';
+import './main.scss';
+import { Navbar } from '../../components/molecules';
 
 class Main extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=7f6b20003610bcd094d9bd0dd92d4080&language=en-US&region=ID&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.lte=2020-11-27&year=2020')
+    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=7f6b20003610bcd094d9bd0dd92d4080&language=en-US&region=ID&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.lte=2020-11-29&year=2020&vote_average.gte=3')
       .then((res) => this.setState({
         poster: res.data.results,
       }));
@@ -41,18 +42,24 @@ class Main extends Component {
   render() {
     const { poster } = this.state;
     return (
-      <MovieContext.Consumer>
-        {(context) => (
-          poster.map((item) => (
-            <Display
-              key={item.id}
-              src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
-              title={item.title}
-              price={this.setPrice(item.vote_average)}
-              click={() => context.setMovie(item.id)}
-            />
-          )))}
-      </MovieContext.Consumer>
+      <div className="main-page">
+        <Navbar />
+        <h1>Watch Movies Anywhere, Anytime!</h1>
+        <div className="main-movies">
+          <MovieContext.Consumer>
+            {(context) => (
+              poster.map((item) => (
+                <Display
+                  key={item.id}
+                  src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
+                  title={item.title}
+                  price={this.setPrice(item.vote_average)}
+                  click={() => context.setMovie(item.id)}
+                />
+              )))}
+          </MovieContext.Consumer>
+        </div>
+      </div>
     );
   }
 }
