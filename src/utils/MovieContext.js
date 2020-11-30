@@ -11,7 +11,94 @@ class MovieProvider extends Component {
       movieID: 0,
       movie: {},
       moviecast: {},
+      price: 0,
+      cash: 100000,
+      owned: [],
     };
+  }
+
+  setPrice = (rating) => {
+    let price = 0;
+
+    if (rating >= 1 && rating <= 3) {
+      price = 3500;
+    }
+    if (rating > 3 && rating <= 6) {
+      price = 8250;
+    }
+    if (rating > 6 && rating <= 8) {
+      price = 16350;
+    }
+    if (rating > 8 && rating <= 10) {
+      price = 21250;
+    }
+
+    return price;
+  }
+
+  purchase = (movie) => {
+    const { cash } = this.state;
+    const owned = JSON.parse(localStorage.getItem('Owned'));
+    const Price = JSON.parse(localStorage.getItem('Price'));
+    let isAvailable;
+    let filterOwned;
+
+    if (owned) {
+      isAvailable = owned.filter((item) => item.id === movie.id);
+    }
+
+    if (!owned) {
+      isAvailable = [];
+    }
+
+    if (!isAvailable.length) {
+      const localOwned = JSON.parse(localStorage.getItem('Owned'));
+      const localCash = JSON.parse(localStorage.getItem('Cash'));
+      let newCash = 0;
+      let newOwned = [];
+
+      if (localOwned) {
+        filterOwned = localOwned.filter((item) => item.id === movie.id);
+
+        if (filterOwned.length) {
+          alert('Have owned');
+          newOwned = localOwned;
+        }
+        if (!filterOwned.length) {
+          newOwned = [...localOwned, movie];
+        }
+      }
+
+      if (!localOwned) {
+        newOwned = [movie];
+      }
+
+      if (!localCash) {
+        newCash = cash - Price;
+      }
+
+      if (localCash) {
+        if (filterOwned.length) {
+          newCash = localCash;
+          console.log('cash tetap');
+        }
+
+        if (!filterOwned.length) {
+          newCash = localCash - Price;
+        }
+      }
+
+      if (newCash <= 0) {
+        alert('not enough');
+      }
+
+      if (newCash >= 0) {
+        localStorage.setItem('Cash', JSON.stringify(newCash));
+        localStorage.setItem('Owned', JSON.stringify(newOwned));
+      }
+      console.log(newCash);
+    }
+    // window.location.reload();
   }
 
   setMovie = async (id) => {
@@ -21,12 +108,26 @@ class MovieProvider extends Component {
       movie: resMovie.data,
       movieID: id,
       moviecast: resCast.data,
+      price: this.setPrice(resMovie.data.vote_average),
     });
+    localStorage.setItem('Movie', JSON.stringify(resMovie.data));
+    localStorage.setItem('Price', JSON.stringify(this.setPrice(resMovie.data.vote_average)));
+    // window.location.reload();
   };
+
+  displayCast = (casts) => {
+    const displayCasts = [];
+    for (let i = 0; i < 4; i += 1) {
+      displayCasts.push(casts[i].name);
+    }
+    return <span>{displayCasts.join(',')}</span>;
+  }
 
   render() {
     const { children } = this.props;
-    const { movieID, movie, moviecast } = this.state;
+    const {
+      movieID, movie, moviecast, price, cash, owned,
+    } = this.state;
     return (
       <MovieContext.Provider
         value={{
@@ -34,6 +135,11 @@ class MovieProvider extends Component {
           movie,
           moviecast,
           setMovie: this.setMovie,
+          price,
+          cash,
+          owned,
+          purchase: this.purchase,
+          cast: this.displayCast,
         }}
       >
         {children}
