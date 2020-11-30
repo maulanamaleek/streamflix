@@ -1,0 +1,17 @@
+.main-page {
+  width: 60vw;
+  margin: auto;
+
+  h1 {
+    text-align: center;
+    color: rgb(54, 53, 53);
+  }
+
+  .main-movies {
+    display: grid;
+    margin-top: 90px;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: center;
+    justify-content: space-around;
+  }
+}

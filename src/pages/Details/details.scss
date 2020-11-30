@@ -1,0 +1,51 @@
+.details {
+  width: 100vw;
+
+  h1 {
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .details-movie {
+    width: 60vw;
+    margin: auto;
+    height: 350px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+
+    .details-left {
+      img {
+        display: block;
+        margin: auto;
+      }
+    }
+
+    .details-right {
+      position: relative;
+      button {
+        padding: 8px 12px;
+        border: 0;
+        outline: 0;
+        border-radius: 5px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-right: 20px;
+        background-color: #d7385e;
+        position: absolute;
+        bottom: 10px;
+        cursor: pointer;
+      }
+
+      span {
+        position: absolute;
+        padding: 7px 12px;
+        bottom: 10px;
+        left: 110px;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
