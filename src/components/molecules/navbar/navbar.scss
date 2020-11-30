@@ -1,0 +1,26 @@
+.navbar-container {
+  width: 100%;
+  height: 90px;
+  background-color: white;
+
+  .navbar-item {
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 200px;
+      margin-right: 600px;
+    }
+
+    p {
+      display: inline-block;
+      width: 100px;
+      padding: 0;
+      margin: auto 10px;
+    }
+  }
+}
