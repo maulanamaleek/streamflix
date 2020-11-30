@@ -1,3 +1,4 @@
 import Display from './display';
+import Navbar from './navbar';
 
-export default Display;
+export { Display, Navbar };
