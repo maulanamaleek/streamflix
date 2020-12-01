@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Main from './pages/Main';
-import Details from './pages/Details';
+import { Collection, Details, Main } from './pages';
 
 export default function App() {
   return (
@@ -9,7 +8,8 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route path="/details" component={Details} />
+          <Route path="/collection" component={Collection} />
+          <Route path="/:movieID/:slug" component={Details} />
         </Switch>
       </Router>
     </div>
