@@ -10,6 +10,8 @@ import Banner from '../../assets/banner.png';
 import './main.scss';
 
 class Main extends Component {
+  abortController = new AbortController();
+
   constructor(props) {
     super(props);
     this.state = {
@@ -47,6 +49,10 @@ class Main extends Component {
     localStorage.setItem('Page', pages);
   }
 
+  componentWillUnmount() {
+    this.abortController.abort();
+  }
+
   setPrice = (rating) => {
     let price = 0;
 
@@ -66,10 +72,10 @@ class Main extends Component {
     return price;
   }
 
-  changePage = async (page) => {
+  changePage = (page) => {
     localStorage.setItem('Page', JSON.stringify(page));
 
-    await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=7f6b20003610bcd094d9bd0dd92d4080&language=en-US&region=ID&sort_by=popularity.desc&page=${page}&release_date.lte=2020-11-29&year=2020&vote_average.gte=3`)
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=7f6b20003610bcd094d9bd0dd92d4080&language=en-US&region=ID&sort_by=popularity.desc&page=${page}&release_date.lte=2020-11-29&year=2020&vote_average.gte=3`)
       .then((res) => this.setState({
         poster: res.data.results,
       }));
