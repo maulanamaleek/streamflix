@@ -6,6 +6,12 @@
 4. Pagination discover page
 5. responsive in mobile screen
 
+# View Project Online
+
+check this link if you want to demo this app without installing in your computer.
+
+https://maulanamaleek.github.io/streamflix/
+
 
 # How to Set Up Project in Local
 
@@ -19,4 +25,5 @@ if package and dependencies have installed succesfully, then run:
 
 `npm start`
 
+or just simply go for https://maulanamaleek.github.io/streamflix/ to view online
 
