@@ -1,0 +1,126 @@
+.collection {
+  width: 60vw;
+  margin: auto;
+
+  h1 {
+    text-align: center;
+    margin: 50px auto;
+  }
+
+  .reset {
+    float: right;
+    margin-right: 50px;
+    background-color: white;
+    border: 0;
+    outline: 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #d7385e;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .movie-collection {
+    width: 100%;
+    margin-top: 100px;
+
+    .item-collection {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 30px 0px;
+
+      img {
+        height: 200px;
+        margin-right: 100px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        width: 500px;
+      }
+
+      span {
+        width: 100px;
+        margin-right: 100px;
+      }
+
+      button {
+        height: 50px;
+        width: 150px;
+        padding: 5px 10px;
+        border: 0;
+        outline: 0;
+        border-radius: 5px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-right: 20px;
+        background-color: #d7385e;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        .play {
+          height: 25px;
+          margin: 0;
+        }
+
+        span {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.no-collection {
+  width: 60vw;
+  margin: auto;
+  height: 100vh;
+  position: relative;
+
+  h1 {
+    position: absolute;
+    top: 30%;
+    font-size: 2.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  button {
+    height: 60px;
+    width: 170px;
+    padding: 5px 10px;
+    border: 0;
+    outline: 0;
+    border-radius: 15px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+    background-color: #d7385e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
