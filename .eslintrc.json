@@ -27,6 +27,15 @@
                     ".jsx"
                 ]
             }
+        ],
+        "camelcase": [
+            "error",
+            {
+                "ignoreDestructuring": true,
+                "allow": [
+                    "^UNSAFE_"
+                ]
+            }
         ]
     }
 }
