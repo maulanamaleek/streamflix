@@ -1,6 +1,14 @@
+.main-container {
+  width: 100vw;
+}
+
 .main-page {
   width: 60vw;
   margin: auto;
+
+  @media screen and (max-width: 400px) {
+    width: 100vw;
+  }
 
   .banner {
     width: 100%;
@@ -10,6 +18,10 @@
   h1 {
     text-align: center;
     color: rgb(54, 53, 53);
+
+    @media screen and (max-width: 400px) {
+      font-size: 1.5rem;
+    }
   }
 
   .main-movies {
@@ -18,6 +30,12 @@
     grid-template-columns: repeat(4, 1fr);
     align-content: center;
     justify-content: space-around;
+
+    @media screen and (max-width: 400px) {
+      grid-template-columns: repeat(2, 1fr);
+      overflow-x: hidden;
+      margin-top: 20px;
+    }
   }
 
   .active {
