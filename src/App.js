@@ -9,9 +9,9 @@ export default function App() {
       <MovieProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Main} />
             <Route path="/page/:page" component={Main} />
             <Route path="/collection" component={Collection} />
+            <Route path="/" component={Main} />
             <Route path="/:movieID/:slug" component={Details} />
           </Switch>
         </Router>
