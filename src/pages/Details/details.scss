@@ -1,5 +1,6 @@
 .details {
-  width: 100vw;
+  width: 60vw;
+  margin: auto;
 
   h1 {
     margin-top: 100px;
@@ -8,7 +9,7 @@
   }
 
   .details-movie {
-    width: 60vw;
+    width: 100%;
     margin: auto;
     height: 350px;
     display: grid;
