@@ -8,14 +8,39 @@
     margin: auto;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
-    .coins {
+    img {
       width: 200px;
-      padding: 5px 5px;
+      flex: 1;
+    }
+
+    p {
+      display: inline-block;
+      width: 100px;
+      padding: 0;
+      margin: auto 10px;
+    }
+  }
+
+  .navbar-right {
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+
+    .user-icon {
+      display: inline-block;
+      width: 50px;
+      vertical-align: middle;
+    }
+
+    .coins {
+      width: 120px;
+      padding: 7px 10px;
       background-color: rgb(221, 221, 221);
       border-radius: 15px;
+      margin: 0px 20px;
 
       img {
         width: 25px;
@@ -30,16 +55,17 @@
       }
     }
 
-    img {
-      width: 200px;
-      margin-right: 600px;
-    }
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      color: black;
+      margin-right: 20px;
+      text-transform: uppercase;
+      font-size: 1rem;
 
-    p {
-      display: inline-block;
-      width: 100px;
-      padding: 0;
-      margin: auto 10px;
+      &:hover {
+        color: #d7385e;
+      }
     }
   }
 }
