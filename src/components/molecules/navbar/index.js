@@ -13,8 +13,10 @@ export default function Navbar() {
         <Link to="/"><img src={Logo} alt="Streamflix" /></Link>
 
         <div className="navbar-right">
-          <Link to="/">Discover</Link>
-          <Link to="/collection">Collection</Link>
+          <div className="link-page">
+            <Link to="/">Discover</Link>
+            <Link to="/collection">Collection</Link>
+          </div>
           <div className="coins">
             <img src={Coins} alt="Coins" />
             <span>{`Rp ${cash}`}</span>
