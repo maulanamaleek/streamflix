@@ -8,6 +8,7 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
+          <Route path="/page/:page" component={Main} />
           <Route path="/collection" component={Collection} />
           <Route path="/:movieID/:slug" component={Details} />
         </Switch>
