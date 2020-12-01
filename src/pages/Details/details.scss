@@ -11,7 +11,7 @@
   .details-movie {
     width: 100%;
     margin: auto;
-    height: 350px;
+    height: 450px;
     display: grid;
     grid-template-columns: 1fr 1.5fr;
 
@@ -24,6 +24,41 @@
 
     .details-right {
       position: relative;
+
+      .details-title {
+        margin-top: 0;
+      }
+
+      .details-overview {
+        margin-bottom: 10px;
+      }
+
+      .overview {
+        margin-top: 0px;
+      }
+
+      .vote {
+        img {
+          height: 15px;
+          display: inline-block;
+          margin-right: 10px;
+        }
+
+        span {
+          display: inline-block;
+        }
+      }
+
+      .time {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        img {
+          height: 15px;
+          margin-right: 10px;
+        }
+      }
+
       button {
         padding: 8px 12px;
         border: 0;
@@ -34,15 +69,11 @@
         font-weight: 600;
         margin-right: 20px;
         background-color: #d7385e;
-        position: absolute;
-        bottom: 10px;
         cursor: pointer;
       }
 
-      span {
-        position: absolute;
+      .movie-price {
         padding: 7px 12px;
-        bottom: 10px;
         left: 110px;
         font-size: 1.1rem;
         font-weight: 600;
