@@ -8,7 +8,7 @@ export default function App() {
     <div>
       <MovieProvider>
         <Switch>
-          <Route path={`${process.env.PUBLIC_URL}/`} component={Main} />
+          <Route exact path="/" component={Main} />
           <Route path="/page/:page" component={Main} />
           <Route path="/collection" component={Collection} />
           <Route path="/:movieID/:slug" component={Details} />
