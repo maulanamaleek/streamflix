@@ -5,6 +5,7 @@
 .collection {
   width: 60vw;
   margin: auto;
+  min-height: 900px;
 
   @media screen and (max-width: 400px) {
     width: 100vw;

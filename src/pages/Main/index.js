@@ -67,7 +67,8 @@ class Main extends Component {
   }
 
   changePage = (page) => {
-    localStorage.setItem('Page', JSON.stringify(page));
+    localStorage.setItem('Page', page);
+    // const newPage = JSON.parse(localStorage.getItem('Page'));
   }
 
   displayPage = () => {
@@ -78,7 +79,7 @@ class Main extends Component {
 
     for (let i = 1; i <= total; i += 1) {
       items.push(
-        <Pagination.Item key={i} active={i === page} href={`/page/${i}`} onClick={() => this.changePage(i)}>
+        <Pagination.Item key={i} href={`/page/${i}`} active={i === page} onClick={this.displayPage}>
           {i}
         </Pagination.Item>,
       );
