@@ -1,11 +1,28 @@
+.details-container {
+  width: 100vw;
+  height: max-content;
+}
+
 .details {
   width: 60vw;
   margin: auto;
+  min-height: 900px;
+  @media screen and (max-width: 400px) {
+    width: 100vw;
+    margin-bottom: 100px;
+    display: block;
+  }
 
   h1 {
     margin-top: 100px;
     text-align: center;
     margin-bottom: 100px;
+
+    @media screen and (max-width: 400px) {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      margin-top: 50px;
+    }
   }
 
   .details-movie {
@@ -14,6 +31,10 @@
     height: 450px;
     display: grid;
     grid-template-columns: 1fr 1.5fr;
+
+    @media screen and (max-width: 400px) {
+      display: block;
+    }
 
     .details-left {
       img {
@@ -25,27 +46,67 @@
     .details-right {
       position: relative;
 
+      @media screen and (max-width: 400px) {
+        position: static;
+        height: fit-content;
+        margin-bottom: 100px;
+        display: block;
+      }
+
       .details-title {
         margin-top: 0;
+        @media screen and (max-width: 400px) {
+          font-size: 1.2rem;
+          text-align: center;
+          margin-top: 20px;
+        }
       }
 
       .details-overview {
         margin-bottom: 10px;
+        @media screen and (max-width: 400px) {
+          margin: 10px auto;
+          text-align: center;
+          font-size: 1.2rem;
+        }
       }
 
       .overview {
         margin-top: 0px;
+
+        @media screen and (max-width: 400px) {
+          width: 90vw;
+          margin: auto;
+          max-height: 1000px;
+          display: block;
+        }
+      }
+
+      .movie-cast-name {
+        @media screen and (max-width: 400px) {
+          width: 90vw;
+          margin: 20px auto;
+        }
       }
 
       .vote {
+        @media screen and (max-width: 400px) {
+          width: fit-content;
+          display: inline-flex;
+          margin-right: 20px;
+          align-items: center;
+          margin-left: 90px;
+        }
         img {
           height: 15px;
           display: inline-block;
           margin-right: 10px;
+          vertical-align: center;
         }
 
         span {
           display: inline-block;
+          vertical-align: center;
         }
       }
 
@@ -53,6 +114,9 @@
         display: flex;
         align-items: center;
         margin-top: 10px;
+        @media screen and (max-width: 400px) {
+          display: inline-flex;
+        }
         img {
           height: 15px;
           margin-right: 10px;
@@ -70,15 +134,26 @@
         margin-right: 20px;
         background-color: #d7385e;
         cursor: pointer;
+
+        @media screen and (max-width: 400px) {
+          padding: 3px 5px;
+          margin: auto;
+          display: block;
+        }
       }
 
       .movie-price {
         padding: 7px 12px;
-        left: 110px;
         font-size: 1.1rem;
         font-weight: 600;
         display: inline-block;
         vertical-align: middle;
+
+        @media screen and (max-width: 400px) {
+          margin: auto;
+          display: block;
+          text-align: center;
+        }
       }
     }
   }
