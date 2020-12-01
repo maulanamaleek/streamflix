@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/streamflix/static/css/main.1d0bfd66.chunk.css",
+    "main.js": "/streamflix/static/js/main.053af964.chunk.js",
+    "main.js.map": "/streamflix/static/js/main.053af964.chunk.js.map",
+    "runtime-main.js": "/streamflix/static/js/runtime-main.850711b2.js",
+    "runtime-main.js.map": "/streamflix/static/js/runtime-main.850711b2.js.map",
+    "static/css/2.1a02f21c.chunk.css": "/streamflix/static/css/2.1a02f21c.chunk.css",
+    "static/js/2.2da6bc22.chunk.js": "/streamflix/static/js/2.2da6bc22.chunk.js",
+    "static/js/2.2da6bc22.chunk.js.map": "/streamflix/static/js/2.2da6bc22.chunk.js.map",
+    "index.html": "/streamflix/index.html",
+    "static/css/2.1a02f21c.chunk.css.map": "/streamflix/static/css/2.1a02f21c.chunk.css.map",
+    "static/css/main.1d0bfd66.chunk.css.map": "/streamflix/static/css/main.1d0bfd66.chunk.css.map",
+    "static/js/2.2da6bc22.chunk.js.LICENSE.txt": "/streamflix/static/js/2.2da6bc22.chunk.js.LICENSE.txt",
+    "static/media/banner.2ab5443f.png": "/streamflix/static/media/banner.2ab5443f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.850711b2.js",
+    "static/css/2.1a02f21c.chunk.css",
+    "static/js/2.2da6bc22.chunk.js",
+    "static/css/main.1d0bfd66.chunk.css",
+    "static/js/main.053af964.chunk.js"
+  ]
+}
