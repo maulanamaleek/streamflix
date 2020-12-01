@@ -33,8 +33,8 @@ export default function Display({
 
 Display.propTypes = {
   src: PropTypes.node.isRequired,
-  movie: PropTypes.node.isRequired,
+  movie: PropTypes.instanceOf(Object).isRequired,
   price: PropTypes.node.isRequired,
-  click: PropTypes.node.isRequired,
+  click: PropTypes.func.isRequired,
   slug: PropTypes.node.isRequired,
 };
