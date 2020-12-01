@@ -37,11 +37,9 @@ class MovieProvider extends Component {
   }
 
   purchase = (movie) => {
-    const { cash } = this.state;
     const owned = JSON.parse(localStorage.getItem('Owned'));
     const Price = JSON.parse(localStorage.getItem('Price'));
     let isAvailable;
-    let filterOwned;
 
     if (owned) {
       isAvailable = owned.filter((item) => item.id === movie.id);
@@ -52,53 +50,24 @@ class MovieProvider extends Component {
     }
 
     if (!isAvailable.length) {
-      const localOwned = JSON.parse(localStorage.getItem('Owned'));
+      const localOwned = JSON.parse(localStorage.getItem('Owned')) || [];
       const localCash = JSON.parse(localStorage.getItem('Cash'));
       let newCash = 0;
       let newOwned = [];
 
-      if (localOwned) {
-        filterOwned = localOwned.filter((item) => item.id === movie.id);
-
-        if (filterOwned.length) {
-          alert('Have owned');
-          newOwned = localOwned;
-        }
-        if (!filterOwned.length) {
-          newOwned = [...localOwned, movie];
-        }
-      }
-
-      if (!localOwned) {
-        newOwned = [movie];
-      }
-
-      if (!localCash) {
-        newCash = cash - Price;
-      }
-
-      if (localCash) {
-        if (filterOwned.length) {
-          newCash = localCash;
-          console.log('cash tetap');
-        }
-
-        if (!filterOwned.length) {
-          newCash = localCash - Price;
-        }
-      }
+      newOwned = [...localOwned, movie];
+      newCash = localCash - Price;
 
       if (newCash <= 0) {
-        alert('not enough');
+        alert('Not enough balance to purchase');
       }
 
       if (newCash >= 0) {
         localStorage.setItem('Cash', JSON.stringify(newCash));
         localStorage.setItem('Owned', JSON.stringify(newOwned));
       }
-      console.log(newCash);
+      window.location.reload();
     }
-    // window.location.reload();
   }
 
   setMovie = async (id) => {
@@ -112,7 +81,7 @@ class MovieProvider extends Component {
     });
     localStorage.setItem('Movie', JSON.stringify(resMovie.data));
     localStorage.setItem('Price', JSON.stringify(this.setPrice(resMovie.data.vote_average)));
-    // window.location.reload();
+    window.location.reload();
   };
 
   displayCast = (casts) => {
