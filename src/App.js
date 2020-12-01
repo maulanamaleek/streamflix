@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { Collection, Details, Main } from './pages';
 import MovieProvider from './utils/MovieContext';
 
@@ -7,14 +7,12 @@ export default function App() {
   return (
     <div>
       <MovieProvider>
-        <Router basename="/">
-          <Switch>
-            <Route path="/page/:page" component={Main} />
-            <Route path="/collection" component={Collection} />
-            <Route path="/:movieID/:slug" component={Details} />
-            <Route path="/" component={Main} />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route path="/page/:page" component={withRouter(Main)} />
+          <Route path="/collection" component={Collection} />
+          <Route exact path="/:movieID/:slug" component={Details} />
+          <Route exact path="/" component={withRouter(Main)} />
+        </Switch>
       </MovieProvider>
     </div>
   );
