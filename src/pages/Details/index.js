@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Navbar } from '../../components/molecules';
 // import axios from 'axios';
 import { MovieContext } from '../../utils/MovieContext';
 import './details.scss';
@@ -41,6 +42,7 @@ class Details extends Component {
     const Price = JSON.parse(localStorage.getItem('Price'));
     return (
       <div className="details">
+        <Navbar />
         <h1>Details</h1>
         <MovieContext.Consumer>
           {(context) => (
