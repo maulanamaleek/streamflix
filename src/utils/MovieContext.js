@@ -59,7 +59,7 @@ class MovieProvider extends Component {
       newCash = localCash - Price;
 
       if (newCash <= 0) {
-        alert('Not enough balance to purchase');
+        window.alert('Not enough balance to purchase');
       }
 
       if (newCash >= 0) {
@@ -81,6 +81,8 @@ class MovieProvider extends Component {
     });
     localStorage.setItem('Movie', JSON.stringify(resMovie.data));
     localStorage.setItem('Price', JSON.stringify(this.setPrice(resMovie.data.vote_average)));
+    localStorage.setItem('Cast', JSON.stringify(resCast.data.cast));
+
     window.location.reload();
   };
 
