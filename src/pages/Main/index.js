@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import { Pagination } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Display from '../../components/molecules/display';
 import { MovieContext } from '../../utils/MovieContext';
-import './main.scss';
-import { Navbar } from '../../components/molecules';
+import { Navbar, Footer, Display } from '../../components/molecules';
 import Banner from '../../assets/banner.png';
+import './main.scss';
 
 class Main extends Component {
   constructor(props) {
@@ -101,28 +100,31 @@ class Main extends Component {
     }
 
     return (
-      <div className="main-page">
-        <Navbar />
-        <img className="banner" src={Banner} alt="Banner" />
-        <h1>Discover</h1>
-        <div className="main-movies">
-          <MovieContext.Consumer>
-            {(context) => (
-              poster.map((item) => (
-                <Display
-                  key={item.id}
-                  src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
-                  movie={item}
-                  slug={item.title.toLowerCase().split(' ').join('-')}
-                  price={this.setPrice(item.vote_average)}
-                  click={() => context.setMovie(item.id)}
-                />
-              )))}
-          </MovieContext.Consumer>
+      <div className="main-container">
+        <div className="main-page">
+          <Navbar />
+          <img className="banner" src={Banner} alt="Banner" />
+          <h1>Discover</h1>
+          <div className="main-movies">
+            <MovieContext.Consumer>
+              {(context) => (
+                poster.map((item) => (
+                  <Display
+                    key={item.id}
+                    src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
+                    movie={item}
+                    slug={item.title.toLowerCase().split(' ').join('-')}
+                    price={this.setPrice(item.vote_average)}
+                    click={() => context.setMovie(item.id)}
+                  />
+                )))}
+            </MovieContext.Consumer>
+          </div>
+          <div className="pagination-container">
+            {this.displayPage()}
+          </div>
         </div>
-        <div className="pagination-container">
-          {this.displayPage()}
-        </div>
+        <Footer />
       </div>
     );
   }
