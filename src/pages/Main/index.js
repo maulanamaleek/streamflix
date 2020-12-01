@@ -4,6 +4,7 @@ import Display from '../../components/molecules/display';
 import { MovieContext } from '../../utils/MovieContext';
 import './main.scss';
 import { Navbar } from '../../components/molecules';
+import Banner from '../../assets/banner.png';
 
 class Main extends Component {
   constructor(props) {
@@ -13,8 +14,16 @@ class Main extends Component {
     };
   }
 
+  UNSAFE_componentWillMount() {
+    const currCash = JSON.parse(localStorage.getItem('Cash'));
+
+    if (!currCash) {
+      localStorage.setItem('Cash', JSON.stringify(100000));
+    }
+  }
+
   componentDidMount() {
-    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=7f6b20003610bcd094d9bd0dd92d4080&language=en-US&region=ID&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.lte=2020-11-29&year=2020&vote_average.gte=3')
+    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=7f6b20003610bcd094d9bd0dd92d4080&language=en-US&region=ID&sort_by=popularity.desc&page=1&release_date.lte=2020-11-29&year=2020&vote_average.gte=3')
       .then((res) => this.setState({
         poster: res.data.results,
       }));
@@ -41,10 +50,12 @@ class Main extends Component {
 
   render() {
     const { poster } = this.state;
+
     return (
       <div className="main-page">
         <Navbar />
-        <h1>Watch Movies Anywhere, Anytime!</h1>
+        <img className="banner" src={Banner} alt="Banner" />
+        <h1>Discover</h1>
         <div className="main-movies">
           <MovieContext.Consumer>
             {(context) => (
@@ -52,7 +63,8 @@ class Main extends Component {
                 <Display
                   key={item.id}
                   src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
-                  title={item.title}
+                  movie={item}
+                  slug={item.title.toLowerCase().split(' ').join('-')}
                   price={this.setPrice(item.vote_average)}
                   click={() => context.setMovie(item.id)}
                 />
