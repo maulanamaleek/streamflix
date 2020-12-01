@@ -11,6 +11,25 @@
     justify-content: center;
     align-items: center;
 
+    .coins {
+      width: 200px;
+      padding: 5px 5px;
+      background-color: rgb(221, 221, 221);
+      border-radius: 15px;
+
+      img {
+        width: 25px;
+        display: inline-block;
+        margin: 0px 7px;
+        vertical-align: middle;
+      }
+
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+
     img {
       width: 200px;
       margin-right: 600px;
